@@ -1,1 +1,25 @@
 # Sample trigger scripe
+name: Main Trigger Workflow
+
+on:
+  # Define the event that triggers this main workflow
+  # push:
+  #   branches:
+  #     - main
+  #     - development
+  # Allows manual triggering via the GitHub UI
+  workflow_dispatch:
+
+jobs:
+  # 1. Job to call the reusable workflow
+  call-sample-workflow:
+    # runs-on: ubuntu-latest
+    
+    # The 'uses' keyword triggers the reusable workflow.
+    # We reference it using its local path in the repository.
+    uses: ./.github/workflows/reuse-wf1.yml
+    
+    # Pass the required inputs to the reusable workflow
+    with:
+      # cname is the required input defined in your reusable workflow
+      cname: 'my-service-build-task'

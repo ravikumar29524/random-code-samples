@@ -1,0 +1,19 @@
+name: Sample reusable workflow 1
+on:
+  workflow_call:
+    inputs:
+      cname:
+        description: The name of the task
+        type: string
+        required: true
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    env:
+      CNAME: "${{ inputs.cname }}"
+    steps:
+      - name: Print the given inputs
+        run: echo " Hello $CNAME"
+
+    
