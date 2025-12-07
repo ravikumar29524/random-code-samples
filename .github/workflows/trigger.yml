@@ -26,4 +26,4 @@ jobs:
     # Pass the required inputs to the reusable workflow
     with:
       # cname is the required input defined in your reusable workflow
-      cname: "${{ github.event.inputs.serice_name }}"
+      cname: "${{ github.event.inputs.service_name }}"
