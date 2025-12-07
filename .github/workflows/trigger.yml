@@ -9,11 +9,15 @@ on:
   #     - development
   # Allows manual triggering via the GitHub UI
   workflow_dispatch:
-
+    inputs:
+      service_name:
+        description: "Name of the service"
+        type: string
+        required: true
 jobs:
   # 1. Job to call the reusable workflow
   call-sample-workflow:
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     # The 'uses' keyword triggers the reusable workflow.
     # We reference it using its local path in the repository.
@@ -22,4 +26,4 @@ jobs:
     # Pass the required inputs to the reusable workflow
     with:
       # cname is the required input defined in your reusable workflow
-      cname: 'my-service-build-task'
+      cname: "${{ github.event.inputs.serice_name }}"
