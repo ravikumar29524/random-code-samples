@@ -41,7 +41,7 @@ jobs:
         run: echo "SERVICE_NAME = $SERVICE_NAME"
 
       - name: Print the job level env using the github approach
-        run: echo "SERVICE_NAME = ${{ SERVICE_NAME }}"
+        run: echo "SERVICE_NAME = ${{ env.SERVICE_NAME }}"
       
 
   # Job to call the reusable workflow
