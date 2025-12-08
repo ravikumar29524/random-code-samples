@@ -43,6 +43,8 @@ jobs:
       - name: Print the job level env using the github approach
         run: echo "SERVICE_NAME = ${{ env.SERVICE_NAME }}"
       
+      - name: Print the prev job level env using the github approach
+        run: echo "DEPLOY_CONFIG = $DEPLOY_CONFIG"
 
   # Job to call the reusable workflow
   call-sample-workflow:
