@@ -32,6 +32,17 @@ jobs:
       - name: Verify the environment variable is set
         run: |
           echo "The exported variable is: $DEPLOY_CONFIG"
+  
+  post_env_update_job:
+    needs: use_custom_action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the job level env using the shell approach
+        run: echo "SERVICE_NAME = $SERVICE_NAME"
+
+      - name: Print the job level env using the github approach
+        run: echo "SERVICE_NAME = ${{ SERVICE_NAME }}"
+      
 
   # Job to call the reusable workflow
   call-sample-workflow:
@@ -39,4 +50,4 @@ jobs:
     # We reference it using its local path in the repository.
     uses: ./.github/workflows/reuse-wf1.yml
     with:
-      cname: "${{ env.SERVICE_NAME }}"
+      cname: "${{ github.event.inputs.service_name }}"
