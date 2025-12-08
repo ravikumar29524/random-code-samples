@@ -39,4 +39,4 @@ jobs:
     # We reference it using its local path in the repository.
     uses: ./.github/workflows/reuse-wf1.yml
     with:
-      cname: "${{ env.SERVICE_NAME }}" # "${{ github.event.inputs.service_name }}"
+      cname: "${{ env.SERVICE_NAME }}"
